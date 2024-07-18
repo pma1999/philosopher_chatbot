@@ -1,6 +1,6 @@
 # Philosopher Chatbot
 
-Philosopher Chatbot es una aplicación interactiva de línea de comandos que permite a los usuarios conversar con simulaciones de famosos filósofos históricos. La aplicación utiliza la API de Anthropic para generar respuestas basadas en el estilo y las ideas filosóficas de cada pensador.
+Philosopher Chatbot es una aplicación interactiva de línea de comandos que permite a los usuarios conversar con simulaciones de famosos filósofos históricos en múltiples idiomas (español, inglés y catalán). La aplicación utiliza la API de Anthropic para generar respuestas basadas en el estilo y las ideas filosóficas de cada pensador en el idioma seleccionado por el usuario.
 
 ## Características
 
@@ -8,6 +8,7 @@ Philosopher Chatbot es una aplicación interactiva de línea de comandos que permi
 - Selección de filósofos históricos
 - Conversación dinámica utilizando la API de Anthropic (Claude-3-Opus)
 - Respuestas personalizadas basadas en el estilo y las ideas de cada filósofo
+- Soporte multilingüe (español, inglés y catalán)
 - Manejo de errores y codificación UTF-8 para compatibilidad con caracteres especiales
 
 ## Requisitos
@@ -40,26 +41,34 @@ Philosopher Chatbot es una aplicación interactiva de línea de comandos que permi
    python app.py
    ```
 
-2. Seleccione un filósofo de la lista proporcionada ingresando el número correspondiente.
+2. Seleccione el idioma deseado (español, inglés o catalán) cuando se le solicite.
 
-3. Inicie una conversación con el filósofo seleccionado. Puede hacer preguntas o discutir ideas relacionadas con su filosofía.
+3. Elija un filósofo de la lista proporcionada ingresando el número correspondiente.
 
-4. Para finalizar la conversación, escriba 'exit'.
+4. Inicie una conversación con el filósofo seleccionado. Puede hacer preguntas o discutir ideas relacionadas con su filosofía.
+
+5. Para finalizar la conversación, escriba 'exit' (o 'salir' en español, 'sortir' en catalán).
 
 ## Estructura del Proyecto
 
 - `app.py`: Contiene la lógica principal de la aplicación, incluyendo la interfaz de usuario y la integración con la API de Anthropic.
 - `config.py`: Almacena la configuración de la aplicación, incluyendo la clave de API de Anthropic.
-- `philosophers.py`: Define la lista de filósofos disponibles con sus nombres, períodos y principales ideas.
+- `philosophers.py`: Define la lista de filósofos disponibles con sus nombres, períodos y principales ideas en múltiples idiomas.
+- `translations.py`: Contiene las traducciones de los mensajes y prompts del sistema en múltiples idiomas.
 - `requirements.txt`: Lista las dependencias del proyecto.
 
 ## Personalización
 
-Para añadir nuevos filósofos o modificar los existentes, edite el archivo `philosophers.py`. Cada filósofo está representado por un diccionario con las siguientes claves:
+Para añadir nuevos filósofos o modificar los existentes, edite el archivo `philosophers.py`. Cada filósofo está representado por un diccionario con las siguientes claves para cada idioma soportado:
 
 - `name`: Nombre del filósofo
 - `period`: Período histórico al que pertenece
 - `main_ideas`: Lista de las principales ideas o conceptos asociados al filósofo
+
+Para añadir soporte para un nuevo idioma:
+1. Actualice el archivo `philosophers.py` para incluir la información en el nuevo idioma.
+2. Añada las traducciones correspondientes en el archivo `translations.py`.
+3. Modifique la función `select_language()` en `app.py` para incluir el nuevo idioma como opción.
 
 ## Manejo de Errores
 

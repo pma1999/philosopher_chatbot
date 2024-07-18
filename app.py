@@ -4,46 +4,55 @@ from config import ANTHROPIC_API_KEY
 import sys
 import io
 import codecs
+from translations import translations
+from philosophers import philosophers
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-def read_philosophers():
-    encodings = ['utf-8', 'latin-1', 'iso-8859-1', 'cp1252']
-    for encoding in encodings:
+def select_language():
+    while True:
         try:
-            with codecs.open('philosophers.py', 'r', encoding=encoding) as file:
-                content = file.read()
-            exec(content, globals())
-            return philosophers
-        except UnicodeDecodeError:
-            continue
-    raise ValueError("Unable to read philosophers.py with any of the attempted encodings")
-
-philosophers = read_philosophers()
+            choice = int(input(translations['es']['language_selection']))
+            if 1 <= choice <= 3:
+                return ['es', 'en', 'ca'][choice - 1]
+            else:
+                print(translations['es']['invalid_language'])
+                return 'es'
+        except ValueError:
+            print(translations['es']['invalid_language'])
+            return 'es'
 
 def main():
-    print("Welcome to the Philosopher Chatbot!")
-    print("Available philosophers:")
-    for i, philosopher in enumerate(philosophers, 1):
-        print(f"{i}. {philosopher['name'].encode('utf-8').decode('utf-8')}")
+    language = select_language()
+    trans = translations[language]
+    
+    print(trans['welcome'])
+    print(trans['available_philosophers'])
+    for i, philosopher in enumerate(philosophers.keys(), 1):
+        print(f"{i}. {philosophers[philosopher][language]['name']}")
 
     while True:
         try:
-            choice = int(input("Choose a philosopher (enter the number): ")) - 1
+            choice = int(input(trans['choose_philosopher'])) - 1
             if 0 <= choice < len(philosophers):
                 break
             else:
-                print("Invalid choice. Please try again.")
+                print(trans['invalid_choice'])
         except ValueError:
-            print("Please enter a valid number.")
+            print(trans['invalid_choice'])
 
-    selected_philosopher = philosophers[choice]
+    selected_philosopher = list(philosophers.keys())[choice]
+    philosopher_data = philosophers[selected_philosopher][language]
 
-    print(f"\nYou are now chatting with {selected_philosopher['name']}. Type 'exit' to end the conversation.\n")
+    print(f"\n{trans['chatting_with'].format(philosopher_data['name'])}\n")
 
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
-    system_prompt = f"You are {selected_philosopher['name']}, the famous philosopher from the {selected_philosopher['period']}. Respond to questions as if you were them, using their ideas, writing style, and philosophical perspective. Your main ideas include: {', '.join(selected_philosopher['main_ideas'])}. Your goal is to help the user learn about your philosophy in an engaging and informative way."
+    system_prompt = trans['system_prompt'].format(
+        philosopher_data['name'],
+        philosopher_data['period'],
+        ', '.join(philosopher_data['main_ideas'])
+    )
 
     messages = [
         {"role": "user", "content": "Hello, I'd like to learn about your philosophical ideas."}
@@ -58,16 +67,16 @@ def main():
         )
 
         assistant_response = response.content[0].text
-        print(f"{selected_philosopher['name']}: {assistant_response.encode('utf-8').decode('utf-8')}")
+        print(f"{philosopher_data['name']}: {assistant_response}")
         messages.append({"role": "assistant", "content": assistant_response})
 
     except anthropic.APIError as e:
-        print(f"An error occurred: {e}")
-        print("Please try again or type 'exit' to end the conversation.")
+        print(f"{trans['error_occurred'].format(e)}")
+        print(trans['try_again'])
 
     while True:
-        user_input = input("You: ")
-        if user_input.lower() == 'exit':
+        user_input = input(f"{trans['you']} ")
+        if user_input.lower() in ['exit', 'salir', 'sortir']:
             break
 
         messages.append({"role": "user", "content": user_input})
@@ -81,14 +90,14 @@ def main():
             )
 
             assistant_response = response.content[0].text
-            print(f"{selected_philosopher['name']}: {assistant_response.encode('utf-8').decode('utf-8')}")
+            print(f"{philosopher_data['name']}: {assistant_response}")
             messages.append({"role": "assistant", "content": assistant_response})
 
         except anthropic.APIError as e:
-            print(f"An error occurred: {e}")
-            print("Please try again or type 'exit' to end the conversation.")
+            print(f"{trans['error_occurred'].format(e)}")
+            print(trans['try_again'])
 
-    print("Thank you for using the Philosopher Chatbot!")
+    print(trans['exit'])
 
 if __name__ == "__main__":
     main()
