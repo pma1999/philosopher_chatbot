@@ -117,7 +117,24 @@ def main():
         user_input = handle_user_input(trans)
         if user_input is None:
             break
-        update_conversation(messages, "user", user_input)
+
+        messages.append({"role": "user", "content": user_input})
+
+        try:
+            response = client.messages.create(
+                model="claude-3-5-sonnet-20240620",
+                max_tokens=1000,
+                system=system_prompt,
+                messages=messages
+            )
+
+            assistant_response = response.content[0].text
+            print(f"{philosopher_data['name']}: {assistant_response}")
+            messages.append({"role": "assistant", "content": assistant_response})
+
+        except anthropic.APIError as e:
+            print(f"{trans['error_occurred'].format(e)}")
+            print(trans['try_again'])
 
     print(trans['exit'])
 
