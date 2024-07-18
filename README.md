@@ -1,14 +1,14 @@
 # Philosopher Chatbot
 
-Philosopher Chatbot es una aplicación interactiva de línea de comandos que permite a los usuarios conversar con simulaciones de famosos filósofos históricos. La aplicación utiliza la API de Anthropic para generar respuestas basadas en el estilo y las ideas filosóficas de cada pensador.
+Philosopher Chatbot es una aplicaciÃ³n interactiva de lÃ­nea de comandos que permite a los usuarios conversar con simulaciones de famosos filÃ³sofos histÃ³ricos. La aplicaciÃ³n utiliza la API de Anthropic para generar respuestas basadas en el estilo y las ideas filosÃ³ficas de cada pensador.
 
-## Características
+## CaracterÃ­sticas
 
-- Interfaz de línea de comandos interactiva
-- Selección de filósofos históricos
-- Conversación dinámica utilizando la API de Anthropic (Claude-3-Opus)
-- Respuestas personalizadas basadas en el estilo y las ideas de cada filósofo
-- Manejo de errores y codificación UTF-8 para compatibilidad con caracteres especiales
+- Interfaz de lÃ­nea de comandos interactiva
+- SelecciÃ³n de filÃ³sofos histÃ³ricos
+- ConversaciÃ³n dinÃ¡mica utilizando la API de Anthropic (Claude-3.5-Sonnet)
+- Respuestas personalizadas basadas en el estilo y las ideas de cada filÃ³sofo
+- Manejo de errores y codificaciÃ³n UTF-8 para compatibilidad con caracteres especiales
 
 ## Requisitos
 
@@ -16,7 +16,7 @@ Philosopher Chatbot es una aplicación interactiva de línea de comandos que permi
 - Bibliotecas de Python (ver `requirements.txt`)
 - Clave de API de Anthropic
 
-## Instalación
+## InstalaciÃ³n
 
 1. Clone el repositorio:
    ```
@@ -35,38 +35,38 @@ Philosopher Chatbot es una aplicación interactiva de línea de comandos que permi
 
 ## Uso
 
-1. Ejecute la aplicación:
+1. Ejecute la aplicaciÃ³n:
    ```
    python app.py
    ```
 
-2. Seleccione un filósofo de la lista proporcionada ingresando el número correspondiente.
+2. Seleccione un filÃ³sofo de la lista proporcionada ingresando el nÃºmero correspondiente.
 
-3. Inicie una conversación con el filósofo seleccionado. Puede hacer preguntas o discutir ideas relacionadas con su filosofía.
+3. Inicie una conversaciÃ³n con el filÃ³sofo seleccionado. Puede hacer preguntas o discutir ideas relacionadas con su filosofÃ­a.
 
-4. Para finalizar la conversación, escriba 'exit'.
+4. Para finalizar la conversaciÃ³n, escriba 'exit'.
 
 ## Estructura del Proyecto
 
-- `app.py`: Contiene la lógica principal de la aplicación, incluyendo la interfaz de usuario y la integración con la API de Anthropic.
-- `config.py`: Almacena la configuración de la aplicación, incluyendo la clave de API de Anthropic.
-- `philosophers.py`: Define la lista de filósofos disponibles con sus nombres, períodos y principales ideas.
+- `app.py`: Contiene la lÃ³gica principal de la aplicaciÃ³n, incluyendo la interfaz de usuario y la integraciÃ³n con la API de Anthropic.
+- `config.py`: Almacena la configuraciÃ³n de la aplicaciÃ³n, incluyendo la clave de API de Anthropic.
+- `philosophers.py`: Define la lista de filÃ³sofos disponibles con sus nombres, perÃ­odos y principales ideas.
 - `requirements.txt`: Lista las dependencias del proyecto.
 
-## Personalización
+## PersonalizaciÃ³n
 
-Para añadir nuevos filósofos o modificar los existentes, edite el archivo `philosophers.py`. Cada filósofo está representado por un diccionario con las siguientes claves:
+Para aÃ±adir nuevos filÃ³sofos o modificar los existentes, edite el archivo `philosophers.py`. Cada filÃ³sofo estÃ¡ representado por un diccionario con las siguientes claves:
 
-- `name`: Nombre del filósofo
-- `period`: Período histórico al que pertenece
-- `main_ideas`: Lista de las principales ideas o conceptos asociados al filósofo
+- `name`: Nombre del filÃ³sofo
+- `period`: PerÃ­odo histÃ³rico al que pertenece
+- `main_ideas`: Lista de las principales ideas o conceptos asociados al filÃ³sofo
 
 ## Manejo de Errores
 
-La aplicación incluye manejo de errores para:
-- Entradas de usuario inválidas
+La aplicaciÃ³n incluye manejo de errores para:
+- Entradas de usuario invÃ¡lidas
 - Errores de la API de Anthropic
-- Problemas de codificación de caracteres
+- Problemas de codificaciÃ³n de caracteres
 
 ## Contribuciones
 
