@@ -7,7 +7,7 @@ Philosopher Chatbot es una aplicación interactiva de línea de comandos que per
 - Interfaz de línea de comandos interactiva
 - Selección de filósofos históricos
 - Conversación dinámica utilizando la API de Anthropic (Claude-3-Opus)
-- Respuestas personalizadas basadas en el estilo y las ideas de cada fil�sofo
+- Respuestas personalizadas basadas en el estilo y las ideas de cada filósofo
 - Soporte multilingüe (español, inglés y catalán)
 - Manejo de errores y codificación UTF-8 para compatibilidad con caracteres especiales
 
