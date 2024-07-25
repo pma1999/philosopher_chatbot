@@ -152,4 +152,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 Pablo Miguel - pablomiguelargudo@gmail.com
 
-Project Link: [https://github.com/yourusername/philosopher-chatbot](https://github.com/yourusername/philosopher-chatbot)
+Project Link: [https://github.com/pma1999/philosopher-chatbot](https://github.com/yourusername/philosopher-chatbot)
