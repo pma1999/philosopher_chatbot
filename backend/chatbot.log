@@ -528,3 +528,9 @@
 2024-07-25 23:52:39,831:INFO:127.0.0.1 - - [25/Jul/2024 23:52:39] "OPTIONS /api/send-message HTTP/1.1" 200 -
 2024-07-25 23:52:44,871:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2024-07-25 23:52:44,882:INFO:127.0.0.1 - - [25/Jul/2024 23:52:44] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-26 01:43:06,098:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-07-26 01:43:06,100:INFO:[33mPress CTRL+C to quit[0m
+2024-07-26 01:43:06,108:INFO: * Restarting with stat
+2024-07-26 01:43:10,894:WARNING: * Debugger is active!
+2024-07-26 01:43:10,908:INFO: * Debugger PIN: 136-478-240

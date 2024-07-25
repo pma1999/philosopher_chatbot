@@ -3,7 +3,14 @@ from flask_cors import CORS
 from flask_session import Session
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+import random
+import string
+import os
 import anthropic
+import logging
+from translations import translations
+from philosophers import philosophers
+import uuid
 try:
     from config import ANTHROPIC_API_KEY, SECRET_KEY, SESSION_TYPE, SESSION_PERMANENT, SESSION_USE_SIGNER, RATELIMIT_DEFAULT
 except ImportError:
@@ -25,13 +32,8 @@ RATELIMIT_DEFAULT = '10 per minute'
     # Ahora importamos las variables del archivo recién creado
     from config import ANTHROPIC_API_KEY, SECRET_KEY, SESSION_TYPE, SESSION_PERMANENT, SESSION_USE_SIGNER, RATELIMIT_DEFAULT
 
-import logging
-from translations import translations
-from philosophers import philosophers
-import uuid
-import os
-import random
-import string
+
+
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True, origins=['http://localhost:3000'])
