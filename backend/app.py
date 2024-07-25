@@ -8,6 +8,7 @@ from config import ANTHROPIC_API_KEY
 import logging
 from translations import translations
 from philosophers import philosophers
+import uuid
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True, origins=['http://localhost:3000'])
@@ -103,6 +104,36 @@ def start_conversation():
         return jsonify({"error": "Invalid philosopher or language"}), 400
 
     system_prompt = create_system_prompt(philosopher_data, translations[language])
+    
+    # Generate a unique session ID
+    session_id = str(uuid.uuid4())
+    session[session_id] = {
+        'language': language,
+        'philosopher_id': philosopher_id,
+        'api_key': api_key,
+        'system_prompt': system_prompt,
+        'conversation': []
+    }
+    session.modified = True
+
+    return jsonify({"message": "Conversation started successfully", "session_id": session_id}), 200
+
+    language = request.json.get('language')
+    philosopher_id = request.json.get('philosopher_id')
+    api_key = request.headers.get('x-api-key')
+
+    if not all([language, philosopher_id, api_key]):
+        return jsonify({"error": "Missing required parameters"}), 400
+
+    client = setup_anthropic_client(api_key)
+    if not client:
+        return jsonify({"error": "Invalid API key"}), 400
+
+    philosopher_data = philosophers.get(philosopher_id, {}).get(language)
+    if not philosopher_data:
+        return jsonify({"error": "Invalid philosopher or language"}), 400
+
+    system_prompt = create_system_prompt(philosopher_data, translations[language])
     session['language'] = language
     session['philosopher_id'] = philosopher_id
     session['api_key'] = api_key
@@ -115,6 +146,38 @@ def start_conversation():
 @app.route('/api/send-message', methods=['POST'])
 @limiter.limit("10 per minute")
 def send_message():
+    session_id = request.json.get('session_id')
+    message = request.json.get('message')
+    api_key = request.headers.get('x-api-key')
+
+    if not all([session_id, message, api_key]):
+        return jsonify({"error": "Session ID, message, and API key are required"}), 400
+
+    if session_id not in session:
+        return jsonify({"error": "Conversation not started"}), 400
+
+    session_data = session[session_id]
+
+    client = setup_anthropic_client(api_key)
+    if not client:
+        return jsonify({"error": "Invalid API key"}), 400
+
+    try:
+        response = client.messages.create(
+            model="claude-3-5-sonnet-20240620",
+            max_tokens=1000,
+            system=session_data['system_prompt'],
+            messages=session_data['conversation'] + [{"role": "user", "content": message}]
+        )
+        ai_response = response.content[0].text if response.content else "Lo siento, no pude generar una respuesta."
+        session_data['conversation'].append({"role": "user", "content": message})
+        session_data['conversation'].append({"role": "assistant", "content": ai_response})
+        session.modified = True
+        return jsonify({"response": ai_response}), 200
+    except Exception as e:
+        logging.error(f"Error in AI response: {e}")
+        return jsonify({"error": str(e)}), 500
+
     message = request.json.get('message')
     api_key = request.headers.get('x-api-key')
 

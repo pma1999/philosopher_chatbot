@@ -1,3 +1,5 @@
+// components/ChatInterface.tsx
+
 import React, { useState, useEffect } from 'react';
 import { useAppContext } from '../contexts/AppContext';
 import { startConversation, sendMessage } from '../services/api';
@@ -8,7 +10,7 @@ interface Message {
 }
 
 const ChatInterface: React.FC = () => {
-  const { language, apiKey, philosopherId, setCurrentStep } = useAppContext();
+  const { language, apiKey, philosopherId, setSessionId, sessionId, setCurrentStep } = useAppContext();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -24,7 +26,8 @@ const ChatInterface: React.FC = () => {
     const initConversation = async () => {
       setIsLoading(true);
       try {
-        await startConversation(language, philosopherId, apiKey);
+        const response = await startConversation(language, philosopherId, apiKey);
+        setSessionId(response.session_id); // Store the session ID
         setMessages([]);
         setError(null);
         setIsConversationStarted(true);
@@ -37,7 +40,7 @@ const ChatInterface: React.FC = () => {
       }
     };
     initConversation();
-  }, [language, apiKey, philosopherId, setCurrentStep]);
+  }, [language, apiKey, philosopherId, setCurrentStep, setSessionId]);
 
   const handleSendMessage = async () => {
     if (input.trim() && !isLoading && isConversationStarted) {
@@ -45,7 +48,7 @@ const ChatInterface: React.FC = () => {
       setMessages(prev => [...prev, { role: 'user', content: input }]);
       setInput('');
       try {
-        const response = await sendMessage(input, apiKey);
+        const response = await sendMessage(sessionId, input, apiKey); // Pass session ID
         setMessages(prev => [...prev, { role: 'assistant', content: response }]);
         setError(null);
       } catch (error) {
@@ -63,7 +66,8 @@ const ChatInterface: React.FC = () => {
   const handleRestartConversation = async () => {
     setIsLoading(true);
     try {
-      await startConversation(language, philosopherId, apiKey);
+      const response = await startConversation(language, philosopherId, apiKey);
+      setSessionId(response.session_id); // Store the session ID
       setMessages([]);
       setError(null);
       setIsConversationStarted(true);

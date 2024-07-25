@@ -1,3 +1,5 @@
+// services/api.ts
+
 import axios from 'axios';
 
 const API_URL = 'http://localhost:5000/api';
@@ -60,7 +62,7 @@ export const startConversation = async (language: string, philosopherId: string,
         }
       }
     );
-    return response.data;
+    return response.data; // This will now include the session_id
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       throw new Error(error.response.data.error || 'Failed to start conversation');
@@ -70,10 +72,10 @@ export const startConversation = async (language: string, philosopherId: string,
   }
 };
 
-export const sendMessage = async (message: string, apiKey: string) => {
+export const sendMessage = async (sessionId: string, message: string, apiKey: string) => {
   try {
     const response = await axios.post(`${API_URL}/send-message`, 
-      { message },
+      { session_id: sessionId, message },
       {
         headers: {
           'Content-Type': 'application/json',
