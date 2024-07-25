@@ -26,7 +26,7 @@ const ChatInterface: React.FC = () => {
       setIsLoading(true);
       try {
         const response = await startConversation(language, philosopherId, apiKey);
-        setSessionId(response.session_id); // Store the session ID
+        setSessionId(response.session_id);
         setPhilosopherName(response.philosopher_name);
         setMessages([]);
         setError(null);
@@ -48,7 +48,7 @@ const ChatInterface: React.FC = () => {
       setMessages(prev => [...prev, { role: 'user', content: input }, { role: 'assistant', content: `${philosopherName} is typing...` }]);
       setInput('');
       try {
-        const response = await sendMessage(sessionId, input, apiKey); // Pass session ID
+        const response = await sendMessage(sessionId, input, apiKey);
         setMessages(prev => prev.map(m => m.content === `${philosopherName} is typing...` ? { role: 'assistant', content: response } : m));
         setError(null);
       } catch (error) {
@@ -63,11 +63,18 @@ const ChatInterface: React.FC = () => {
     }
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
+
   const handleRestartConversation = async () => {
     setIsLoading(true);
     try {
       const response = await startConversation(language, philosopherId, apiKey);
-      setSessionId(response.session_id); // Store the session ID
+      setSessionId(response.session_id);
       setPhilosopherName(response.philosopher_name);
       setMessages([]);
       setError(null);
@@ -116,6 +123,7 @@ const ChatInterface: React.FC = () => {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
+            onKeyPress={handleKeyPress}
             className="flex-grow p-2 border rounded"
             placeholder="Type your message..."
             disabled={isLoading}
