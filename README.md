@@ -49,7 +49,7 @@ Philosopher Chatbot is an interactive web application that allows users to engag
 
 1. Clone the repository:
    ```
-   git clone https://github.com/pma99/philosopher-chatbot.git
+   git clone https://github.com/pma1999/philosopher-chatbot.git
    cd philosopher-chatbot
    ```
 
