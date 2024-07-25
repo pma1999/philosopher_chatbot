@@ -1,3 +1,5 @@
+// contexts/AppContext.tsx
+
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 
 interface AppContextType {
@@ -7,6 +9,8 @@ interface AppContextType {
   setApiKey: (key: string) => void;
   philosopherId: string;
   setPhilosopherId: (id: string) => void;
+  sessionId: string;
+  setSessionId: (id: string) => void;
   resetChat: () => void;
   changePhilosopher: () => void;
   changeLanguage: () => void;
@@ -21,6 +25,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [language, setLanguageState] = useState<string>('');
   const [apiKey, setApiKey] = useState<string>('');
   const [philosopherId, setPhilosopherId] = useState<string>('');
+  const [sessionId, setSessionId] = useState<string>('');
   const [currentStep, setCurrentStep] = useState<'language' | 'apiKey' | 'philosopher' | 'chat'>('language');
 
   const setLanguage = (lang: string) => {
@@ -55,6 +60,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       language, setLanguage,
       apiKey, setApiKey, 
       philosopherId, setPhilosopherId,
+      sessionId, setSessionId,
       resetChat,
       changePhilosopher,
       changeLanguage,

@@ -167,3 +167,159 @@
 2024-07-25 02:29:36,463:INFO:127.0.0.1 - - [25/Jul/2024 02:29:36] "OPTIONS /api/send-message HTTP/1.1" 200 -
 2024-07-25 02:29:41,413:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2024-07-25 02:29:41,418:INFO:127.0.0.1 - - [25/Jul/2024 02:29:41] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 16:44:40,847:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-07-25 16:44:40,847:INFO:[33mPress CTRL+C to quit[0m
+2024-07-25 16:44:40,848:INFO: * Restarting with stat
+2024-07-25 16:44:41,359:WARNING: * Debugger is active!
+2024-07-25 16:44:41,362:INFO: * Debugger PIN: 910-043-013
+2024-07-25 16:46:10,751:INFO:127.0.0.1 - - [25/Jul/2024 16:46:10] "OPTIONS /api/validate-api-key HTTP/1.1" 200 -
+2024-07-25 16:46:11,438:INFO:127.0.0.1 - - [25/Jul/2024 16:46:11] "POST /api/validate-api-key HTTP/1.1" 200 -
+2024-07-25 16:46:11,474:INFO:127.0.0.1 - - [25/Jul/2024 16:46:11] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 16:46:11,477:INFO:127.0.0.1 - - [25/Jul/2024 16:46:11] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 16:46:11,789:INFO:127.0.0.1 - - [25/Jul/2024 16:46:11] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 16:46:12,100:INFO:127.0.0.1 - - [25/Jul/2024 16:46:12] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 16:46:24,930:INFO:127.0.0.1 - - [25/Jul/2024 16:46:24] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 16:46:24,931:INFO:127.0.0.1 - - [25/Jul/2024 16:46:24] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 16:46:25,299:INFO:127.0.0.1 - - [25/Jul/2024 16:46:25] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 16:46:25,601:INFO:127.0.0.1 - - [25/Jul/2024 16:46:25] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 16:46:43,459:INFO:127.0.0.1 - - [25/Jul/2024 16:46:43] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 16:46:52,321:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 16:46:52,327:INFO:127.0.0.1 - - [25/Jul/2024 16:46:52] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 16:47:45,239:INFO:127.0.0.1 - - [25/Jul/2024 16:47:45] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 16:47:55,393:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 16:47:55,395:INFO:127.0.0.1 - - [25/Jul/2024 16:47:55] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 16:48:49,789:INFO:127.0.0.1 - - [25/Jul/2024 16:48:49] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 16:49:01,184:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 16:49:01,186:INFO:127.0.0.1 - - [25/Jul/2024 16:49:01] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 16:49:19,030:INFO:127.0.0.1 - - [25/Jul/2024 16:49:19] "OPTIONS /api/validate-api-key HTTP/1.1" 200 -
+2024-07-25 16:49:19,235:INFO:127.0.0.1 - - [25/Jul/2024 16:49:19] "POST /api/validate-api-key HTTP/1.1" 200 -
+2024-07-25 16:49:19,570:INFO:127.0.0.1 - - [25/Jul/2024 16:49:19] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 16:49:19,571:INFO:127.0.0.1 - - [25/Jul/2024 16:49:19] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 16:49:19,884:INFO:127.0.0.1 - - [25/Jul/2024 16:49:19] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 16:49:20,146:INFO:127.0.0.1 - - [25/Jul/2024 16:49:20] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 16:49:38,293:INFO:127.0.0.1 - - [25/Jul/2024 16:49:38] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 16:49:38,489:INFO:127.0.0.1 - - [25/Jul/2024 16:49:38] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 16:49:38,598:INFO:127.0.0.1 - - [25/Jul/2024 16:49:38] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 16:49:39,093:INFO:127.0.0.1 - - [25/Jul/2024 16:49:39] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 16:49:51,121:INFO:127.0.0.1 - - [25/Jul/2024 16:49:51] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 16:49:57,510:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 16:49:57,514:INFO:127.0.0.1 - - [25/Jul/2024 16:49:57] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 16:50:20,903:INFO:127.0.0.1 - - [25/Jul/2024 16:50:20] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 16:50:27,434:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 16:50:27,438:INFO:127.0.0.1 - - [25/Jul/2024 16:50:27] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 16:50:50,943:INFO:127.0.0.1 - - [25/Jul/2024 16:50:50] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 16:51:02,200:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 16:51:02,202:INFO:127.0.0.1 - - [25/Jul/2024 16:51:02] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:26:20,711:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-07-25 17:26:20,711:INFO:[33mPress CTRL+C to quit[0m
+2024-07-25 17:26:20,713:INFO: * Restarting with stat
+2024-07-25 17:26:21,228:WARNING: * Debugger is active!
+2024-07-25 17:26:21,230:INFO: * Debugger PIN: 910-043-013
+2024-07-25 17:26:53,854:INFO:127.0.0.1 - - [25/Jul/2024 17:26:53] "OPTIONS /api/validate-api-key HTTP/1.1" 200 -
+2024-07-25 17:26:54,526:INFO:127.0.0.1 - - [25/Jul/2024 17:26:54] "POST /api/validate-api-key HTTP/1.1" 200 -
+2024-07-25 17:26:54,556:INFO:127.0.0.1 - - [25/Jul/2024 17:26:54] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 17:26:54,570:INFO:127.0.0.1 - - [25/Jul/2024 17:26:54] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 17:26:54,860:INFO:127.0.0.1 - - [25/Jul/2024 17:26:54] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 17:26:55,176:INFO:127.0.0.1 - - [25/Jul/2024 17:26:55] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 17:27:01,610:INFO:127.0.0.1 - - [25/Jul/2024 17:27:01] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:27:01,611:INFO:127.0.0.1 - - [25/Jul/2024 17:27:01] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:27:01,986:INFO:127.0.0.1 - - [25/Jul/2024 17:27:01] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:27:02,295:INFO:127.0.0.1 - - [25/Jul/2024 17:27:02] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:27:08,604:INFO:127.0.0.1 - - [25/Jul/2024 17:27:08] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:27:17,175:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:27:17,181:INFO:127.0.0.1 - - [25/Jul/2024 17:27:17] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:27:39,948:INFO:127.0.0.1 - - [25/Jul/2024 17:27:39] "OPTIONS /api/validate-api-key HTTP/1.1" 200 -
+2024-07-25 17:27:40,312:INFO:127.0.0.1 - - [25/Jul/2024 17:27:40] "POST /api/validate-api-key HTTP/1.1" 200 -
+2024-07-25 17:27:40,328:INFO:127.0.0.1 - - [25/Jul/2024 17:27:40] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 17:27:40,629:INFO:127.0.0.1 - - [25/Jul/2024 17:27:40] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 17:27:40,651:INFO:127.0.0.1 - - [25/Jul/2024 17:27:40] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 17:27:40,910:INFO:127.0.0.1 - - [25/Jul/2024 17:27:40] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 17:28:11,977:INFO:127.0.0.1 - - [25/Jul/2024 17:28:11] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:28:11,977:INFO:127.0.0.1 - - [25/Jul/2024 17:28:11] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:28:12,346:INFO:127.0.0.1 - - [25/Jul/2024 17:28:12] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:28:12,653:INFO:127.0.0.1 - - [25/Jul/2024 17:28:12] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:28:19,612:INFO:127.0.0.1 - - [25/Jul/2024 17:28:19] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:28:27,734:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:28:27,748:INFO:127.0.0.1 - - [25/Jul/2024 17:28:27] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:28:41,543:INFO:127.0.0.1 - - [25/Jul/2024 17:28:41] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:28:52,639:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:28:52,655:INFO:127.0.0.1 - - [25/Jul/2024 17:28:52] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:29:44,350:INFO:127.0.0.1 - - [25/Jul/2024 17:29:44] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:29:52,045:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:29:52,058:INFO:127.0.0.1 - - [25/Jul/2024 17:29:52] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:30:31,723:INFO:127.0.0.1 - - [25/Jul/2024 17:30:31] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:30:39,650:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:30:39,664:INFO:127.0.0.1 - - [25/Jul/2024 17:30:39] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:31:32,281:INFO:127.0.0.1 - - [25/Jul/2024 17:31:32] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:31:40,148:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:31:40,162:INFO:127.0.0.1 - - [25/Jul/2024 17:31:40] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:32:15,723:INFO:127.0.0.1 - - [25/Jul/2024 17:32:15] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:32:22,766:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:32:22,780:INFO:127.0.0.1 - - [25/Jul/2024 17:32:22] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:32:59,468:INFO:127.0.0.1 - - [25/Jul/2024 17:32:59] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 17:32:59,469:INFO:127.0.0.1 - - [25/Jul/2024 17:32:59] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 17:32:59,785:INFO:127.0.0.1 - - [25/Jul/2024 17:32:59] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 17:33:00,058:INFO:127.0.0.1 - - [25/Jul/2024 17:33:00] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 17:33:11,475:INFO:127.0.0.1 - - [25/Jul/2024 17:33:11] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:33:11,782:INFO:127.0.0.1 - - [25/Jul/2024 17:33:11] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:33:11,837:INFO:127.0.0.1 - - [25/Jul/2024 17:33:11] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:33:12,455:INFO:127.0.0.1 - - [25/Jul/2024 17:33:12] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:33:20,085:INFO:127.0.0.1 - - [25/Jul/2024 17:33:20] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:33:26,881:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:33:26,897:INFO:127.0.0.1 - - [25/Jul/2024 17:33:26] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:34:00,048:INFO:127.0.0.1 - - [25/Jul/2024 17:34:00] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 17:34:00,060:INFO:127.0.0.1 - - [25/Jul/2024 17:34:00] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 17:34:00,364:INFO:127.0.0.1 - - [25/Jul/2024 17:34:00] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 17:34:00,680:INFO:127.0.0.1 - - [25/Jul/2024 17:34:00] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-25 17:34:04,914:INFO:127.0.0.1 - - [25/Jul/2024 17:34:04] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:34:04,914:INFO:127.0.0.1 - - [25/Jul/2024 17:34:04] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:34:05,293:INFO:127.0.0.1 - - [25/Jul/2024 17:34:05] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:34:05,588:INFO:127.0.0.1 - - [25/Jul/2024 17:34:05] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:34:09,689:INFO:127.0.0.1 - - [25/Jul/2024 17:34:09] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:34:16,894:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:34:16,909:INFO:127.0.0.1 - - [25/Jul/2024 17:34:16] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:34:24,780:INFO:127.0.0.1 - - [25/Jul/2024 17:34:24] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:34:31,308:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:34:31,322:INFO:127.0.0.1 - - [25/Jul/2024 17:34:31] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:38:31,098:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-07-25 17:38:31,098:INFO:[33mPress CTRL+C to quit[0m
+2024-07-25 17:38:31,099:INFO: * Restarting with stat
+2024-07-25 17:38:31,600:WARNING: * Debugger is active!
+2024-07-25 17:38:31,602:INFO: * Debugger PIN: 910-043-013
+2024-07-25 17:38:40,233:INFO:127.0.0.1 - - [25/Jul/2024 17:38:40] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:38:45,911:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:38:45,916:INFO:127.0.0.1 - - [25/Jul/2024 17:38:45] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:40:52,096:INFO:127.0.0.1 - - [25/Jul/2024 17:40:52] "OPTIONS /api/validate-api-key HTTP/1.1" 200 -
+2024-07-25 17:40:52,763:INFO:127.0.0.1 - - [25/Jul/2024 17:40:52] "POST /api/validate-api-key HTTP/1.1" 200 -
+2024-07-25 17:40:52,778:INFO:127.0.0.1 - - [25/Jul/2024 17:40:52] "OPTIONS /api/philosophers?language=en HTTP/1.1" 200 -
+2024-07-25 17:40:52,794:INFO:127.0.0.1 - - [25/Jul/2024 17:40:52] "GET /api/philosophers?language=en HTTP/1.1" 200 -
+2024-07-25 17:40:53,087:INFO:127.0.0.1 - - [25/Jul/2024 17:40:53] "OPTIONS /api/philosophers?language=en HTTP/1.1" 200 -
+2024-07-25 17:40:53,413:INFO:127.0.0.1 - - [25/Jul/2024 17:40:53] "GET /api/philosophers?language=en HTTP/1.1" 200 -
+2024-07-25 17:41:00,562:INFO:127.0.0.1 - - [25/Jul/2024 17:41:00] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:41:00,563:INFO:127.0.0.1 - - [25/Jul/2024 17:41:00] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:41:00,928:INFO:127.0.0.1 - - [25/Jul/2024 17:41:00] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:41:01,242:INFO:127.0.0.1 - - [25/Jul/2024 17:41:01] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-25 17:41:13,423:INFO:127.0.0.1 - - [25/Jul/2024 17:41:13] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:41:19,776:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:41:19,791:INFO:127.0.0.1 - - [25/Jul/2024 17:41:19] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:41:33,952:INFO:127.0.0.1 - - [25/Jul/2024 17:41:33] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:41:38,685:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:41:38,701:INFO:127.0.0.1 - - [25/Jul/2024 17:41:38] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:42:52,372:INFO:127.0.0.1 - - [25/Jul/2024 17:42:52] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:42:59,024:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:42:59,039:INFO:127.0.0.1 - - [25/Jul/2024 17:42:59] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:43:13,844:INFO:127.0.0.1 - - [25/Jul/2024 17:43:13] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:43:20,475:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:43:20,492:INFO:127.0.0.1 - - [25/Jul/2024 17:43:20] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:44:44,593:INFO:127.0.0.1 - - [25/Jul/2024 17:44:44] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:44:51,689:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:44:51,704:INFO:127.0.0.1 - - [25/Jul/2024 17:44:51] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:45:31,266:INFO:127.0.0.1 - - [25/Jul/2024 17:45:31] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:45:37,426:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:45:37,441:INFO:127.0.0.1 - - [25/Jul/2024 17:45:37] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:45:59,061:INFO:127.0.0.1 - - [25/Jul/2024 17:45:59] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-25 17:46:08,957:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-25 17:46:08,964:INFO:127.0.0.1 - - [25/Jul/2024 17:46:08] "POST /api/send-message HTTP/1.1" 200 -
