@@ -1,90 +1,155 @@
 # Philosopher Chatbot
 
-Philosopher Chatbot es una aplicación interactiva de línea de comandos que permite a los usuarios conversar con simulaciones de famosos filósofos históricos en múltiples idiomas (español, inglés y catalán). La aplicación utiliza la API de Anthropic para generar respuestas basadas en el estilo y las ideas filosóficas de cada pensador en el idioma seleccionado por el usuario.
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Python Version](https://img.shields.io/badge/python-3.6%2B-blue.svg)
+![React Version](https://img.shields.io/badge/react-18.3.1-blue.svg)
 
-## Características
+Philosopher Chatbot is an interactive web application that allows users to engage in conversations with simulations of famous historical philosophers in multiple languages (Spanish, English, and Catalan). The application uses the Anthropic API to generate responses based on the style and philosophical ideas of each thinker in the user's selected language.
 
-- Interfaz de línea de comandos interactiva
-- Selección de filósofos históricos
-- Conversación dinámica utilizando la API de Anthropic (Claude-3.5-Sonnet)
-- Respuestas personalizadas basadas en el estilo y las ideas de cada filósofo
-- Soporte multilingüe (español, inglés y catalán)
-- Manejo de errores y codificación UTF-8 para compatibilidad con caracteres especiales
+## Table of Contents
 
-## Requisitos
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [API Endpoints](#api-endpoints)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
+## Features
+
+- Web-based user interface for easy interaction
+- Multi-language support (Spanish, English, Catalan)
+- Selection of historical philosophers
+- Dynamic conversation using Anthropic's Claude API
+- Personalized responses based on each philosopher's style and ideas
+- Secure API key management
+- Rate limiting to prevent abuse
+
+## Technologies Used
+
+### Backend
 - Python 3.6+
-- Bibliotecas de Python (ver `requirements.txt`)
-- Clave de API de Anthropic
+- Flask
+- Flask-CORS
+- Flask-Session
+- Flask-Limiter
+- Anthropic API
+- Gunicorn (for production deployment)
 
-## Instalación
+### Frontend
+- React 18.3.1
+- TypeScript
+- Axios for API requests
+- Tailwind CSS for styling
 
-1. Clone el repositorio:
+## Installation
+
+1. Clone the repository:
    ```
-   git clone https://github.com/pma1999/philosopher_chatbot.git
+   git clone https://github.com/yourusername/philosopher-chatbot.git
    cd philosopher-chatbot
    ```
 
-2. Instale las dependencias:
+2. Set up the backend:
    ```
+   cd backend
    pip install -r requirements.txt
    ```
 
-3. Configure su clave de API de Anthropic:
-   - Abra el archivo `config.py`
-   - Reemplace `'your_api_key_here'` con su clave de API real de Anthropic
-
-## Uso
-
-1. Ejecute la aplicación:
+3. Set up the frontend:
    ```
+   cd ../frontend
+   npm install
+   ```
+
+4. Create a `config.py` file in the `backend` directory and add your Anthropic API key:
+   ```python
+   ANTHROPIC_API_KEY = 'your_api_key_here'
+   ```
+
+## Usage
+
+1. Start the backend server:
+   ```
+   cd backend
    python app.py
    ```
 
-2. Seleccione el idioma deseado (español, inglés o catalán) cuando se le solicite.
+2. In a new terminal, start the frontend development server:
+   ```
+   cd frontend
+   npm start
+   ```
 
-3. Elija un filósofo de la lista proporcionada ingresando el número correspondiente.
+3. Open your browser and navigate to `http://localhost:3000`
 
-4. Inicie una conversación con el filósofo seleccionado. Puede hacer preguntas o discutir ideas relacionadas con su filosofía.
+4. Select your preferred language, enter your Anthropic API key, choose a philosopher, and start chatting!
 
-5. Para finalizar la conversación, escriba 'exit' (o 'salir' en español, 'sortir' en catalán).
+## Project Structure
 
-## Estructura del Proyecto
+```
+philosopher-chatbot/
+├── backend/
+│   ├── app.py
+│   ├── config.py
+│   ├── philosophers.py
+│   ├── translations.py
+│   └── requirements.txt
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── contexts/
+│   │   ├── services/
+│   │   ├── App.tsx
+│   │   └── index.tsx
+│   ├── package.json
+│   └── tsconfig.json
+└── README.md
+```
 
-- `app.py`: Contiene la lógica principal de la aplicación, incluyendo la interfaz de usuario y la integración con la API de Anthropic.
-- `config.py`: Almacena la configuración de la aplicación, incluyendo la clave de API de Anthropic.
-- `philosophers.py`: Define la lista de filósofos disponibles con sus nombres, períodos y principales ideas en múltiples idiomas.
-- `translations.py`: Contiene las traducciones de los mensajes y prompts del sistema en múltiples idiomas.
-- `requirements.txt`: Lista las dependencias del proyecto.
+### Backend
 
-## Personalización
+- `app.py`: Main Flask application with API endpoints
+- `config.py`: Configuration file for API keys and other settings
+- `philosophers.py`: Database of philosophers and their information
+- `translations.py`: Translations for user interface text
 
-Para añadir nuevos filósofos o modificar los existentes, edite el archivo `philosophers.py`. Cada filósofo está representado por un diccionario con las siguientes claves para cada idioma soportado:
+### Frontend
 
-- `name`: Nombre del filósofo
-- `period`: Período histórico al que pertenece
-- `main_ideas`: Lista de las principales ideas o conceptos asociados al filósofo
+- `components/`: React components for the user interface
+- `contexts/`: React context for managing application state
+- `services/`: API service for communicating with the backend
+- `App.tsx`: Main application component
+- `index.tsx`: Entry point of the React application
 
-Para añadir soporte para un nuevo idioma:
-1. Actualice el archivo `philosophers.py` para incluir la información en el nuevo idioma.
-2. Añada las traducciones correspondientes en el archivo `translations.py`.
-3. Modifique la función `select_language()` en `app.py` para incluir el nuevo idioma como opción.
+## API Endpoints
 
-## Manejo de Errores
+- `GET /api/languages`: Get available languages
+- `POST /api/validate-api-key`: Validate the Anthropic API key
+- `GET /api/philosophers`: Get list of available philosophers
+- `POST /api/start-conversation`: Initialize a conversation with a philosopher
+- `POST /api/send-message`: Send a message to the philosopher and get a response
 
-La aplicación incluye manejo de errores para:
-- Entradas de usuario inválidas
-- Errores de la API de Anthropic
-- Problemas de codificación de caracteres
+## Contributing
 
-## Contribuciones
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Las contribuciones son bienvenidas. Por favor, abra un issue para discutir cambios mayores antes de enviar un pull request.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## Licencia
+## License
 
-[MIT License](https://opensource.org/licenses/MIT)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Contacto
+## Contact
 
-Para preguntas o soporte, por favor abra un issue en el repositorio de GitHub.
+Your Name - [@your_twitter](https://twitter.com/your_twitter) - email@example.com
+
+Project Link: [https://github.com/yourusername/philosopher-chatbot](https://github.com/yourusername/philosopher-chatbot)
