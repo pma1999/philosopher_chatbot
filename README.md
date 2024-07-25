@@ -150,6 +150,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_twitter) - email@example.com
+Pablo Miguel - pablomiguelargudo@gmail.com
 
 Project Link: [https://github.com/yourusername/philosopher-chatbot](https://github.com/yourusername/philosopher-chatbot)
