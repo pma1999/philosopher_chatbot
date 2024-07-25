@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../contexts/AppContext';
 import { validateApiKey } from '../services/api';
 
 const ApiKeyInput: React.FC = () => {
-  const { setApiKey, setCurrentStep } = useAppContext();
+  const { setApiKey, setCurrentStep, currentStep } = useAppContext();
   const [inputKey, setInputKey] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (currentStep !== 'apiKey') {
+      const storedApiKey = localStorage.getItem('anthropic_api_key');
+      if (storedApiKey) {
+        setApiKey(storedApiKey);
+        setCurrentStep('philosopher');
+        navigate('/select-philosopher');
+      }
+    }
+  }, [setApiKey, setCurrentStep, navigate, currentStep]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,6 +28,7 @@ const ApiKeyInput: React.FC = () => {
     try {
       const isValid = await validateApiKey(inputKey);
       if (isValid) {
+        localStorage.setItem('anthropic_api_key', inputKey);
         setApiKey(inputKey);
         setCurrentStep('philosopher');
         navigate('/select-philosopher');

@@ -19,7 +19,9 @@ translations = {
         "historical_context": "Contexto histórico",
         "main_works": "Obras principales",
         "famous_quotes": "Citas famosas",
-        "initial_greeting": "Hola, me gustaría aprender sobre tu filosofía y tus ideas principales."
+        "initial_greeting": "Hola, me gustaría aprender sobre tu filosofía y tus ideas principales.",
+        "typing": "{} está escribiendo...",
+        "error_response": "Lo siento, no pude generar una respuesta."
     },
     "en": {
         "welcome": "Welcome to the Philosopher Chatbot!",
@@ -41,7 +43,9 @@ translations = {
         "historical_context": "Historical Context",
         "main_works": "Main Works",
         "famous_quotes": "Famous Quotes",
-        "initial_greeting": "Hello, I'd like to learn about your philosophy and main ideas."
+        "initial_greeting": "Hello, I'd like to learn about your philosophy and main ideas.",
+        "typing": "{} is typing...",
+        "error_response": "I'm sorry, I couldn't generate a response."
     },
     "ca": {
         "welcome": "Benvingut al Chatbot Filosòfic!",
@@ -63,6 +67,8 @@ translations = {
         "historical_context": "Context històric",
         "main_works": "Obres principals",
         "famous_quotes": "Cites famoses",
-        "initial_greeting": "Hola, m'agradaria aprendre sobre la teva filosofia i les teves idees principals."
+        "initial_greeting": "Hola, m'agradaria aprendre sobre la teva filosofia i les teves idees principals.",
+        "typing": "{} està escrivint...",
+        "error_response": "Ho sento, no he pogut generar una resposta."
     }
 }

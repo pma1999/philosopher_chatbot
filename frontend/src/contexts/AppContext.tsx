@@ -1,6 +1,4 @@
-// contexts/AppContext.tsx
-
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 
 interface AppContextType {
   language: string;
@@ -23,7 +21,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<string>('');
-  const [apiKey, setApiKey] = useState<string>('');
+  const [apiKey, setApiKeyState] = useState<string>('');
   const [philosopherId, setPhilosopherId] = useState<string>('');
   const [sessionId, setSessionId] = useState<string>('');
   const [currentStep, setCurrentStep] = useState<'language' | 'apiKey' | 'philosopher' | 'chat'>('language');
@@ -32,6 +30,18 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     setLanguageState(lang.toLowerCase());
     setCurrentStep('apiKey');
   };
+
+  const setApiKey = (key: string) => {
+    localStorage.setItem('anthropic_api_key', key);
+    setApiKeyState(key);
+  };
+
+  useEffect(() => {
+    const storedApiKey = localStorage.getItem('anthropic_api_key');
+    if (storedApiKey && currentStep !== 'apiKey') {
+      setApiKeyState(storedApiKey);
+    }
+  }, [currentStep]);
 
   const resetChat = () => {
     setCurrentStep('philosopher');
@@ -44,14 +54,10 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   const changeLanguage = () => {
     setLanguageState('');
-    setApiKey('');
-    setPhilosopherId('');
     setCurrentStep('language');
   };
 
   const changeApiKey = () => {
-    setApiKey('');
-    setPhilosopherId('');
     setCurrentStep('apiKey');
   };
 

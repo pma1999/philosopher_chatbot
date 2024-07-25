@@ -1,5 +1,3 @@
-// components/ChatInterface.tsx
-
 import React, { useState, useEffect } from 'react';
 import { useAppContext } from '../contexts/AppContext';
 import { startConversation, sendMessage } from '../services/api';
@@ -16,6 +14,7 @@ const ChatInterface: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isConversationStarted, setIsConversationStarted] = useState(false);
+  const [philosopherName, setPhilosopherName] = useState('');
 
   useEffect(() => {
     if (!language || !apiKey || !philosopherId) {
@@ -28,6 +27,7 @@ const ChatInterface: React.FC = () => {
       try {
         const response = await startConversation(language, philosopherId, apiKey);
         setSessionId(response.session_id); // Store the session ID
+        setPhilosopherName(response.philosopher_name);
         setMessages([]);
         setError(null);
         setIsConversationStarted(true);
@@ -45,11 +45,11 @@ const ChatInterface: React.FC = () => {
   const handleSendMessage = async () => {
     if (input.trim() && !isLoading && isConversationStarted) {
       setIsLoading(true);
-      setMessages(prev => [...prev, { role: 'user', content: input }]);
+      setMessages(prev => [...prev, { role: 'user', content: input }, { role: 'assistant', content: `${philosopherName} is typing...` }]);
       setInput('');
       try {
         const response = await sendMessage(sessionId, input, apiKey); // Pass session ID
-        setMessages(prev => [...prev, { role: 'assistant', content: response }]);
+        setMessages(prev => prev.map(m => m.content === `${philosopherName} is typing...` ? { role: 'assistant', content: response } : m));
         setError(null);
       } catch (error) {
         console.error('Error sending message:', error);
@@ -68,6 +68,7 @@ const ChatInterface: React.FC = () => {
     try {
       const response = await startConversation(language, philosopherId, apiKey);
       setSessionId(response.session_id); // Store the session ID
+      setPhilosopherName(response.philosopher_name);
       setMessages([]);
       setError(null);
       setIsConversationStarted(true);
@@ -97,6 +98,7 @@ const ChatInterface: React.FC = () => {
   return (
     <div className="flex flex-col h-full">
       <div className="flex-grow overflow-y-auto p-4 space-y-4">
+        <h2 className="text-xl font-bold mb-4">{philosopherName}</h2>
         {messages.map((message, index) => (
           <div
             key={index}
