@@ -24,4 +24,4 @@ ehthumbs.db
 Thumbs.db
 
 # Application specific
-config.py
+backend/config.py
