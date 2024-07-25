@@ -50,7 +50,7 @@ Philosopher Chatbot is an interactive web application that allows users to engag
 1. Clone the repository:
    ```
    git clone https://github.com/pma1999/philosopher_chatbot.git
-   cd philosopher-chatbot
+   cd philosopher_chatbot
    ```
 
 2. Set up the backend:
@@ -91,7 +91,7 @@ Philosopher Chatbot is an interactive web application that allows users to engag
 ## Project Structure
 
 ```
-philosopher-chatbot/
+philosopher_chatbot/
 ├── backend/
 │   ├── app.py
 │   ├── config.py
