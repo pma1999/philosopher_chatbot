@@ -13,7 +13,7 @@ from philosophers import philosophers
 import uuid
 try:
     from config import ANTHROPIC_API_KEY, SECRET_KEY, SESSION_TYPE, SESSION_PERMANENT, SESSION_USE_SIGNER, RATELIMIT_DEFAULT
-except ImportError:
+except:
     # Si el archivo no existe, lo creamos con valores predeterminados
     config_content = f"""
 ANTHROPIC_API_KEY = ''
