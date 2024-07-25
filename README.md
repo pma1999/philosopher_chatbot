@@ -49,8 +49,8 @@ Philosopher Chatbot is an interactive web application that allows users to engag
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/philosopher-chatbot.git
-   cd philosopher-chatbot
+   git clone https://github.com/pma1999/philosopher_chatbot.git
+   cd philosopher_chatbot
    ```
 
 2. Set up the backend:
@@ -91,7 +91,7 @@ Philosopher Chatbot is an interactive web application that allows users to engag
 ## Project Structure
 
 ```
-philosopher-chatbot/
+philosopher_chatbot/
 ├── backend/
 │   ├── app.py
 │   ├── config.py
@@ -152,4 +152,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 Pablo Miguel - pablomiguelargudo@gmail.com
 
-Project Link: [https://github.com/yourusername/philosopher-chatbot](https://github.com/yourusername/philosopher-chatbot)
+Project Link: [https://github.com/pma1999/philosopher_chatbot](https://github.com/pma1999/philosopher-chatbot)
