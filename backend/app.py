@@ -4,12 +4,34 @@ from flask_session import Session
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 import anthropic
-from config import ANTHROPIC_API_KEY, SECRET_KEY, SESSION_TYPE, SESSION_PERMANENT, SESSION_USE_SIGNER, RATELIMIT_DEFAULT
+try:
+    from config import ANTHROPIC_API_KEY, SECRET_KEY, SESSION_TYPE, SESSION_PERMANENT, SESSION_USE_SIGNER, RATELIMIT_DEFAULT
+except ImportError:
+    # Si el archivo no existe, lo creamos con valores predeterminados
+    config_content = f"""
+ANTHROPIC_API_KEY = ''
+SECRET_KEY = '{''.join(random.choices(string.ascii_letters + string.digits, k=32))}'
+SESSION_TYPE = 'filesystem'
+SESSION_PERMANENT = False
+SESSION_USE_SIGNER = True
+RATELIMIT_DEFAULT = '10 per minute'
+"""
+    
+    with open('config.py', 'w') as config_file:
+        config_file.write(config_content)
+    
+    print("Se ha creado el archivo config.py con valores predeterminados.")
+    
+    # Ahora importamos las variables del archivo recién creado
+    from config import ANTHROPIC_API_KEY, SECRET_KEY, SESSION_TYPE, SESSION_PERMANENT, SESSION_USE_SIGNER, RATELIMIT_DEFAULT
+
 import logging
 from translations import translations
 from philosophers import philosophers
 import uuid
 import os
+import random
+import string
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True, origins=['http://localhost:3000'])
