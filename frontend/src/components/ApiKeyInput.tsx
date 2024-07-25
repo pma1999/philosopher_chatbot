@@ -1,0 +1,62 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../contexts/AppContext';
+import { validateApiKey } from '../services/api';
+
+const ApiKeyInput: React.FC = () => {
+  const { setApiKey, setCurrentStep } = useAppContext();
+  const [inputKey, setInputKey] = useState('');
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setIsLoading(true);
+    try {
+      const isValid = await validateApiKey(inputKey);
+      if (isValid) {
+        setApiKey(inputKey);
+        setCurrentStep('philosopher');
+        navigate('/select-philosopher');
+      } else {
+        setError('Invalid API Key');
+      }
+    } catch (error) {
+      setError(error instanceof Error ? error.message : 'Error validating API Key');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center">
+      <h2 className="text-2xl font-bold mb-4">Enter Anthropic API Key</h2>
+      <form onSubmit={handleSubmit} className="w-full max-w-sm">
+        <div className="flex items-center border-b border-b-2 border-blue-500 py-2">
+          <input
+            className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+            type="password"
+            placeholder="API Key"
+            value={inputKey}
+            onChange={(e) => setInputKey(e.target.value)}
+            disabled={isLoading}
+          />
+          <button
+            className={`flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded ${
+              isLoading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
+            type="submit"
+            disabled={isLoading}
+          >
+            {isLoading ? 'Validating...' : 'Submit'}
+          </button>
+        </div>
+      </form>
+      {error && <p className="text-red-500 mt-2">{error}</p>}
+    </div>
+  );
+};
+
+export default ApiKeyInput;
