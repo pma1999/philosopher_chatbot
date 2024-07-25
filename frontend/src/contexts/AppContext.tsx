@@ -54,6 +54,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   const changeLanguage = () => {
     setLanguageState('');
+    setApiKeyState('');
+    setPhilosopherId('');
     setCurrentStep('language');
   };
 
