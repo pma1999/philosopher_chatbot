@@ -11,6 +11,10 @@ import logging
 from translations import translations
 from philosophers import philosophers
 import uuid
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 try:
     from config import ANTHROPIC_API_KEY, SECRET_KEY, SESSION_TYPE, SESSION_PERMANENT, SESSION_USE_SIGNER, RATELIMIT_DEFAULT
 except:

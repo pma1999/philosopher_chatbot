@@ -542,3 +542,50 @@
 2024-07-26 01:49:36,263:INFO: * Debugger PIN: 136-478-240
 2024-07-26 01:50:22,709:INFO: * Detected change in 'C:\\Users\\pablo\\OneDrive\\Documentos\\Claude Engineer\\philosopher_chatbot\\philosopher_chatbot\\backend\\app.py', reloading
 2024-07-26 01:50:23,560:INFO: * Restarting with stat
+2024-07-27 11:11:40,476:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-07-27 11:11:40,477:INFO:[33mPress CTRL+C to quit[0m
+2024-07-27 11:11:40,482:INFO: * Restarting with stat
+2024-07-27 11:11:44,823:WARNING: * Debugger is active!
+2024-07-27 11:11:44,830:INFO: * Debugger PIN: 136-478-240
+2024-07-27 11:12:45,088:INFO:127.0.0.1 - - [27/Jul/2024 11:12:45] "OPTIONS /api/validate-api-key HTTP/1.1" 200 -
+2024-07-27 11:12:45,858:INFO:127.0.0.1 - - [27/Jul/2024 11:12:45] "POST /api/validate-api-key HTTP/1.1" 200 -
+2024-07-27 11:12:46,039:INFO:127.0.0.1 - - [27/Jul/2024 11:12:46] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-27 11:12:46,088:INFO:127.0.0.1 - - [27/Jul/2024 11:12:46] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-27 11:12:46,326:INFO:127.0.0.1 - - [27/Jul/2024 11:12:46] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-27 11:12:46,749:INFO:127.0.0.1 - - [27/Jul/2024 11:12:46] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-27 11:13:00,994:INFO:127.0.0.1 - - [27/Jul/2024 11:13:00] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-27 11:13:00,996:INFO:127.0.0.1 - - [27/Jul/2024 11:13:00] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-27 11:13:02,172:INFO:127.0.0.1 - - [27/Jul/2024 11:13:02] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-27 11:13:02,201:INFO:127.0.0.1 - - [27/Jul/2024 11:13:02] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-27 11:13:15,754:INFO:127.0.0.1 - - [27/Jul/2024 11:13:15] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-27 11:13:27,863:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-27 11:13:27,878:INFO:127.0.0.1 - - [27/Jul/2024 11:13:27] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-27 11:14:32,468:INFO:127.0.0.1 - - [27/Jul/2024 11:14:32] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-27 11:14:47,735:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-27 11:14:47,743:INFO:127.0.0.1 - - [27/Jul/2024 11:14:47] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-27 11:15:19,447:INFO:127.0.0.1 - - [27/Jul/2024 11:15:19] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-27 11:15:19,448:INFO:127.0.0.1 - - [27/Jul/2024 11:15:19] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-27 11:15:19,795:INFO:127.0.0.1 - - [27/Jul/2024 11:15:19] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-27 11:15:20,080:INFO:127.0.0.1 - - [27/Jul/2024 11:15:20] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-27 11:15:37,815:INFO:127.0.0.1 - - [27/Jul/2024 11:15:37] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-27 11:15:37,816:INFO:127.0.0.1 - - [27/Jul/2024 11:15:37] "OPTIONS /api/start-conversation HTTP/1.1" 200 -
+2024-07-27 11:15:38,584:INFO:127.0.0.1 - - [27/Jul/2024 11:15:38] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-27 11:15:38,586:INFO:127.0.0.1 - - [27/Jul/2024 11:15:38] "POST /api/start-conversation HTTP/1.1" 200 -
+2024-07-27 11:16:02,220:INFO:127.0.0.1 - - [27/Jul/2024 11:16:02] "OPTIONS /api/send-message HTTP/1.1" 200 -
+2024-07-27 11:16:07,768:INFO:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-07-27 11:16:07,774:INFO:127.0.0.1 - - [27/Jul/2024 11:16:07] "POST /api/send-message HTTP/1.1" 200 -
+2024-07-27 11:16:42,589:INFO:127.0.0.1 - - [27/Jul/2024 11:16:42] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-27 11:16:42,592:INFO:127.0.0.1 - - [27/Jul/2024 11:16:42] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-27 11:16:42,944:INFO:127.0.0.1 - - [27/Jul/2024 11:16:42] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-27 11:16:43,194:INFO:127.0.0.1 - - [27/Jul/2024 11:16:43] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-27 11:17:34,023:INFO:127.0.0.1 - - [27/Jul/2024 11:17:34] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-27 11:17:34,035:INFO:127.0.0.1 - - [27/Jul/2024 11:17:34] "OPTIONS /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-27 11:17:34,369:INFO:127.0.0.1 - - [27/Jul/2024 11:17:34] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-27 11:17:34,632:INFO:127.0.0.1 - - [27/Jul/2024 11:17:34] "GET /api/philosophers?language=es HTTP/1.1" 200 -
+2024-07-27 14:46:59,922:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-07-27 14:46:59,923:INFO:[33mPress CTRL+C to quit[0m
+2024-07-27 14:46:59,927:INFO: * Restarting with stat
+2024-07-27 14:47:02,471:WARNING: * Debugger is active!
+2024-07-27 14:47:02,480:INFO: * Debugger PIN: 136-478-240

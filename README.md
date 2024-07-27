@@ -48,45 +48,42 @@ Philosopher Chatbot is an interactive web application that allows users to engag
 ## Installation
 
 1. Clone the repository:
-   ```
+   ```sh
    git clone https://github.com/pma1999/philosopher_chatbot.git
    cd philosopher_chatbot
    ```
 
 2. Set up the backend:
-   ```
+   ```sh
    cd backend
    pip install -r requirements.txt
    ```
 
 3. Set up the frontend:
-   ```
+   ```sh
    cd ../frontend
    npm install
+
+4. Configure the environment variables. You can do this by adding them to your development environment or by creating a .env file in the backend directory. Here is an example of what the .env file should look like:
+   ```env
+   ANTHROPIC_API_KEY=sk-ant-api03-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+   SECRET_KEY=$(python -c "import secrets; print(secrets.token_urlsafe(32))")
    ```
 
-4. Create a `config.py` file in the `backend` directory and add your Anthropic API key:
-   ```python
-   ANTHROPIC_API_KEY = 'your_api_key_here'
-   ```
-
-## Usage
-
-1. Start the backend server:
-   ```
+5. Start the backend server:
+   ```sh
    cd backend
    python app.py
-   ```
 
-2. In a new terminal, start the frontend development server:
-   ```
+6. In a new terminal, start the frontend development server:
+   ```sh
    cd frontend
    npm start
-   ```
 
-3. Open your browser and navigate to `http://localhost:3000`
+7. Open your browser and navigate to `http://localhost:3000`
 
-4. Select your preferred language, enter your Anthropic API key, choose a philosopher, and start chatting!
+8. Select your preferred language, enter your Anthropic API key, choose a philosopher, and start chatting!
+
 
 ## Project Structure
 
