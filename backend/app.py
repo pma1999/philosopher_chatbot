@@ -3,8 +3,8 @@ from flask_cors import CORS
 from flask_session import Session
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-import random
-import string
+from flask_compress import Compress
+from flask_talisman import Talisman
 import os
 import anthropic
 import logging
@@ -12,62 +12,56 @@ from translations import translations
 from philosophers import philosophers
 import uuid
 from dotenv import load_dotenv
-import os
+from logging.handlers import RotatingFileHandler
+from config import config
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 load_dotenv()
-try:
-    from config import ANTHROPIC_API_KEY, SECRET_KEY, SESSION_TYPE, SESSION_PERMANENT, SESSION_USE_SIGNER, RATELIMIT_DEFAULT
-except:
-    # Si el archivo no existe, lo creamos con valores predeterminados
-    config_content = f"""
-ANTHROPIC_API_KEY = ''
-SECRET_KEY = '{''.join(random.choices(string.ascii_letters + string.digits, k=32))}'
-SESSION_TYPE = 'filesystem'
-SESSION_PERMANENT = False
-SESSION_USE_SIGNER = True
-RATELIMIT_DEFAULT = '10 per minute'
-"""
-    
-    with open('config.py', 'w') as config_file:
-        config_file.write(config_content)
-    
-    print("Se ha creado el archivo config.py con valores predeterminados.")
-    
-    # Ahora importamos las variables del archivo recién creado
-    from config import ANTHROPIC_API_KEY, SECRET_KEY, SESSION_TYPE, SESSION_PERMANENT, SESSION_USE_SIGNER, RATELIMIT_DEFAULT
-
-
-
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True, origins=['http://localhost:3000'])
-
-# Session configuration
-app.config['SECRET_KEY'] = SECRET_KEY
-app.config['SESSION_TYPE'] = SESSION_TYPE
-app.config['SESSION_PERMANENT'] = SESSION_PERMANENT
-app.config['SESSION_USE_SIGNER'] = SESSION_USE_SIGNER
+app.config.from_object(config[os.environ.get('FLASK_ENV') or 'default'])
+CORS(app, supports_credentials=True, origins=['http://localhost:3000', 'https://your-production-frontend-url.com'])
+Compress(app)
+# Configurar Talisman solo en producción
+if os.environ.get('FLASK_ENV') == 'production':
+    Talisman(app, content_security_policy=None, force_https=True)
+else:
+    Talisman(app, content_security_policy=None, force_https=False)
+# Configuración de la aplicación
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_USE_SIGNER'] = True
 Session(app)
 
-# Rate limiter configuration
+# Configuración del limitador de tasa
 limiter = Limiter(
     app=app,
     key_func=get_remote_address,
-    default_limits=[RATELIMIT_DEFAULT]
+    default_limits=["100 per day", "20 per hour"]
 )
 
-# Logging configuration
-logging.basicConfig(filename='chatbot.log', level=logging.INFO, 
-                    format='%(asctime)s:%(levelname)s:%(message)s')
+# Configuración de logging
+if not app.debug:
+    file_handler = RotatingFileHandler('chatbot.log', maxBytes=10240, backupCount=10)
+    file_handler.setFormatter(logging.Formatter(
+        '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
+    ))
+    file_handler.setLevel(logging.INFO)
+    app.logger.addHandler(file_handler)
+    app.logger.setLevel(logging.INFO)
+    app.logger.info('Philosopher Chatbot startup')
 
 def get_api_key():
-    return session.get('api_key') or os.environ.get('ANTHROPIC_API_KEY') or ANTHROPIC_API_KEY
+    return session.get('api_key') or os.getenv('ANTHROPIC_API_KEY')
 
 def setup_anthropic_client(api_key=None):
     try:
         return anthropic.Anthropic(api_key=api_key or get_api_key())
     except Exception as e:
-        logging.error(f"Error setting up Anthropic client: {e}")
+        app.logger.error(f"Error setting up Anthropic client: {e}")
         return None
 
 def create_system_prompt(philosopher_data, translations):
@@ -86,13 +80,24 @@ def get_languages():
 
 @app.route('/api/validate-api-key', methods=['POST'])
 def validate_api_key():
-    api_key = request.json.get('api_key')
-    client = setup_anthropic_client(api_key)
-    if client:
-        session['api_key'] = api_key
-        return jsonify({"valid": True}), 200
-    else:
-        return jsonify({"valid": False}), 400
+    try:
+        api_key = request.json.get('api_key')
+        logger.debug(f"Received API key: {api_key[:5]}...") # Log solo los primeros 5 caracteres por seguridad
+        
+        if not api_key:
+            return jsonify({"error": "API key is required"}), 400
+        
+        client = setup_anthropic_client(api_key)
+        if client:
+            session['api_key'] = api_key
+            logger.info("API key validated successfully")
+            return jsonify({"valid": True}), 200
+        else:
+            logger.warning("Invalid API key")
+            return jsonify({"valid": False}), 400
+    except Exception as e:
+        logger.error(f"Error validating API key: {str(e)}")
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/api/check-api-key', methods=['GET'])
 def check_api_key():
@@ -206,5 +211,24 @@ def send_message():
         logging.error(f"Error in AI response: {e}")
         return jsonify({"error": str(e)}), 500
 
+@app.errorhandler(404)
+def not_found_error(error):
+    return jsonify({"error": "Not found"}), 404
+
+@app.errorhandler(500)
+def internal_error(error):
+    app.logger.error('Server Error: %s', (error))
+    return jsonify({"error": "Internal server error"}), 500
+
+
+# Añadir una ruta de salud para Vercel
+@app.route('/api/health')
+def health_check():
+    return jsonify({"status": "healthy"}), 200
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    if os.environ.get('FLASK_ENV') == 'production':
+        app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+    else:
+        app.run(host='0.0.0.0', port=5000, debug=True)
+
