@@ -15,8 +15,6 @@ from dotenv import load_dotenv
 from logging.handlers import RotatingFileHandler
 from config import config
 
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -82,21 +80,16 @@ def get_languages():
 def validate_api_key():
     try:
         api_key = request.json.get('api_key')
-        logger.debug(f"Received API key: {api_key[:5]}...") # Log solo los primeros 5 caracteres por seguridad
-        
         if not api_key:
             return jsonify({"error": "API key is required"}), 400
         
         client = setup_anthropic_client(api_key)
         if client:
             session['api_key'] = api_key
-            logger.info("API key validated successfully")
             return jsonify({"valid": True}), 200
         else:
-            logger.warning("Invalid API key")
             return jsonify({"valid": False}), 400
     except Exception as e:
-        logger.error(f"Error validating API key: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
 @app.route('/api/check-api-key', methods=['GET'])
