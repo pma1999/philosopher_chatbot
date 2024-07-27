@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "frontend/package.json",
+        "use": "@vercel/static-build",
+        "config": { "distDir": "build" }
+      },
+      {
+        "src": "backend/app.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      { "src": "/api/(.*)", "dest": "backend/app.py" },
+      { "src": "/(.*)", "dest": "frontend/$1" }
+    ],
+    "env": {
+      "ANTHROPIC_API_KEY": "@anthropic_api_key",
+      "SECRET_KEY": "@secret_key"
+    }
+  }
